@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="numb" type="text" />
+    <input type="checkbox" name="" id="opt-p">right
+    <button onclick="add()">add</button>
+    <button onclick="move()">Move</button>
+    <div style="display:flex;" id="main">
+        <ul id="left" style="flex:1 ;padding: 0 20px"></ul>
+        <ul id="right" style="flex:1 ; padding: 0 20px"></ul>
+    </div>
+    <script>
+        function add() {
+            var isRight = document.getElementById("opt-p").checked;
+            append(isRight ? "right" : "left");
+        }
+        function append(id) {
+            var data = document.getElementById("numb").value;
+            var li = document.createElement('li');
+            var span = document.createElement('span');
+            span.innerText = data;
+            var input = document.createElement('input');
+            input.type = "checkbox";
+            input.setAttribute("data-position", id);
+            li.appendChild(input);
+            li.appendChild(span);
+            document.getElementById(id).appendChild(li);
+        }
+        function move() {
+            var selected = document.querySelectorAll("#main input[type='checkbox']:checked");
+            for (var i = 0; i < selected.length; i++) {
+                var position = selected[i].getAttribute("data-position");
+                selected[i].setAttribute("data-position", position == "right" ? "left" : "right");
+                document.getElementById(position == "right" ? "left" : "right")
+                    .appendChild(selected[i].parentElement);
+
+            }
+        }
+    </script>
+</body>
+
+</html>

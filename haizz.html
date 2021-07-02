@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="contain bot">
+        <div class="control bot">
+            <input id="inb" type="text"/>
+            <input id="checkb" type="checkbox"/> <span>left</span>
+            <!-- <button onclick="function1()">add</button> -->
+            <button onclick="function2()">Move</button>
+        </div>
+        <div class="content bot">
+            <div class="items bot">
+                <ul id="list1b">
+                    <li><input class="item" type="checkbox"><span>1</span></li>
+                    <li><input class="item" type="checkbox"><span>2</span></li>
+                    <li><input class="item" type="checkbox"><span>3</span></li>
+                    <li><input class="item" type="checkbox"><span>4</span></li>
+                    <li><input class="item" type="checkbox"><span>5</span></li>
+                </ul>
+            </div>
+            <div class="items bot">
+                <ul id="list2b">
+                    <li><input class="item" type="checkbox"><span>6</span></li>
+                    <li><input class="item" type="checkbox"><span>7</span></li>
+                    <li><input class="item" type="checkbox"><span>8</span></li>
+                    <li><input class="item" type="checkbox"><span>9</span></li>
+                    <li><input class="item" type="checkbox"><span>10</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        function function2() {
+            var node = document.getElementById("list1b").childNodes;
+            let dem = 1,k=0;
+            var a=[];
+            for(i=1;i<node.length;i=i+2){
+                var ck = document.getElementsByClassName("item");
+                if(ck[i-dem].checked==true){
+                    a[k]=i;
+                    k=k+1;
+                }
+                dem=dem+1;
+            }
+            console.log(a);
+            for(j=a.length;j>=0;j--){
+                let b = a[j];
+                console.log(b);
+                 document.getElementById("list2b").appendChild(node[b]);
+            }
+            //console.log(a);
+            // ck[i-dem].className.replace('leftb');
+            //         document.getElementById("list1b").appendChild(node[i]);
+            // var node1 = document.getElementById("list1b").childNodes;
+            // let dem1 = 1;
+            // for(i=1;i<node1.length;i=i+2){
+            //     var ck1 = document.getElementsByClassName("leftb");
+            //     if(ck1[i-dem1].checked==true){
+            //         ck1[i-dem1].className.replace("rightb");
+            //         document.getElementById("list2b").appendChild(node1[i]);
+            //     }
+            //     dem1=dem1+1;
+            //}
+        }
+        </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+<h2>HTML Table</h2>
+<input id="ip1"/>
+<input id="ip2"/>
+<button onclick="add()">Add</button>
+<button onclick="update()">Update</button>
+<table id="tb">
+  <tr>
+    <th>Company</th>
+    <th>Contact</th>
+    <th>Action</th>
+  </tr>
+</table>
+<!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="delete-msg">
+          Bạn có muốn xóa AB không?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Thôi nhịn</button>
+          <button type="button" class="btn btn-primary">Xóa ngay</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function add(){
+            //debugger;         
+            var MyTable = 
+                document.getElementById("tb");       
+            // insert new row.
+            var NewRow = MyTable.insertRow(1);
+            var Newcell1 = NewRow.insertCell(0);
+            var Newcell2 = NewRow.insertCell(1);
+            var Newcell3 = NewRow.insertCell(2)
+            Newcell1.innerHTML = document.getElementById("ip1").value ;
+            Newcell2.innerHTML = document.getElementById("ip2").value ;
+            Newcell3.innerHTML = '<a href="#" onclick="edit()">Edit</a>/<a href="#" data-toggle="modal" data-target="#exampleModal">Delete</a>';
+    }
+    function update(){
+
+    }
+    function edit(){
+      
+    }
+  </script>
+</body>
+</html>
+</body>
+</html>

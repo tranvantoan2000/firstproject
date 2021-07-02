@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .contain{
+            display: flex;
+            width: 60%;
+           
+            flex-wrap: wrap;
+        }
+        .a{
+            width: 50%;
+            height: 1.2rem;
+        }
+        .item{
+            display: flex;
+        }
+    </style>
+    <div class="contain">
+        <div class="item a">
+            <label for="">Tên môn: </label><input id="subject" type="text"/> 
+            <button onclick="function1()">Display</button> <br>
+        </div>
+        <div class="item a">
+            <label for="">Nhập điểm: </label> <input id="point" type="text">
+            <button onclick="function2()">add</button>
+        </div>
+        <p id="hienthi" class="show"></p>
+    </div>
+    <script>
+        var lopHoc={
+            "danhSachSV":[
+                sv1={
+                    "name":"a",
+                    "age":18,
+                    "dSMon":[
+                        mon1={
+                            "tenmon":"Toán",
+                            "diem":5,
+                        },
+                        mon2={
+                            "tenmon":"Lý",
+                            "diem":10,
+                        },
+                        mon3={
+                            "tenmon":"Hóa",
+                            "diem":7,
+                        }
+                    ]
+                } ,
+                sv2={
+                    "name":"b",
+                    "age":20,
+                    "dSMon":[
+                        mon1={
+                            "tenmon":"Toán",
+                            "diem":7,
+                        },
+                        mon2={
+                            "tenmon":"Lý",
+                            "diem":8.5,
+                        },
+                        mon3={
+                            "tenmon":"Hóa",
+                            "diem":6,
+                        }
+                    ]
+                },
+                sv3={
+                    "name":"c",
+                    "age":19,
+                    "dSMon":[
+                        mon1={
+                            "tenmon":"Toán",
+                            "diem":6,
+                        },
+                        mon2={
+                            "tenmon":"Lý",
+                            "diem":9,
+                        },
+                        mon3={
+                            "tenmon":"Hóa",
+                            "diem":5,
+                        }
+                    ]
+                }  
+            ]
+        }
+        var x=0;
+        var y=0;
+        function function1(){
+            var a = document.getElementById("subject").value;
+            var s="";
+            var min = 11;
+            if (a=="all"){
+                for(i = 0;i<lopHoc.danhSachSV.length;i++){
+                    for(j=0;j<lopHoc.danhSachSV[i].dSMon.length;j++){
+                        s="Họ Tên: "+lopHoc.danhSachSV[i].name+"<br/>"+"Tuổi: "+lopHoc.danhSachSV[i].age+"<br/>"+
+                        "Tên Môn: "+lopHoc.danhSachSV[i].dSMon[j].tenmon+"<br/>"+"Điểm: "+lopHoc.danhSachSV[i].dSMon[j].diem+"<hr/>";
+                        document.write(s);
+                    }
+                }
+            }
+            for(i = 0;i<lopHoc.danhSachSV.length;i++){              
+                for(j = 0;j<lopHoc.danhSachSV[i].dSMon.length;j++){                  
+                    if(lopHoc.danhSachSV[i].dSMon[j].tenmon==a){
+                        if(lopHoc.danhSachSV[i].dSMon[j].diem < min){
+                            min = lopHoc.danhSachSV[i].dSMon[j].diem;   
+                            s="Học sinh có điểm thấp nhất: "+"<br/>"+"Họ Tên: "+lopHoc.danhSachSV[i].name+"<br/>"+"Tuổi: "+lopHoc.danhSachSV[i].age+"<br/>"+
+                            "Tên Môn: "+lopHoc.danhSachSV[i].dSMon[j].tenmon+"<br/>"+"Điểm: "+lopHoc.danhSachSV[i].dSMon[j].diem;  
+                            x=i;
+                            y=j;
+                        }
+                    }
+                }
+            }
+            document.getElementById("hienthi").innerHTML=s;
+        }
+        function function2 () {
+            var b = document.getElementById("point").value;
+            lopHoc.danhSachSV[x].dSMon[y].diem = b;
+            function1();
+        }
+    </script>
+</body>
+</html>
